@@ -1,5 +1,16 @@
 #!/bin/bash
 
+set -e
+
+NGINX_PORT=${NGINX_PORT:-80}
+
+export NGINX_PORT
+
+echo "==> Setting port to ${NGINX_PORT}"
+
+envsubst '${NGINX_PORT}' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
+
+
 if [[ $CONFIG_VARS ]]; then
 
   SPLIT=$(echo $CONFIG_VARS | tr "," "\n")

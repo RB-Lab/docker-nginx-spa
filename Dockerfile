@@ -10,7 +10,7 @@ RUN chmod +x /usr/local/bin/json_env
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 # Overwrite default config
-COPY nginx-site.conf /etc/nginx/conf.d/default.conf
+COPY nginx-site.conf /etc/nginx/conf.d/default.conf.template
 COPY expires.conf /etc/nginx/conf.d/expires.conf
 
 # Set a path to config file to be written, can be changed at runtime
